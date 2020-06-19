@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * @author wangziyu1
  * @date 2020-06-17 19:31
- * 队列:
+ * 队列: 先入先出即为队列.
  */
 public class ArrayQueueDemo {
 
