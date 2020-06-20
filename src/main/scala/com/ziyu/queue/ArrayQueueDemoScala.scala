@@ -57,7 +57,5 @@ object ArrayQueueDemoScala {
         case "exit" => System.exit(0)
       }
     }
-
   }
-
 }

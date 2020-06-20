@@ -68,6 +68,7 @@ public class ArrayQueueDemo {
 
 /**
  * 使用数组模拟一个队列,编写一个 ArrayQueue
+ * 缺点:内存空间不能复用.
  */
 class ArrayQueue {
     //表示数组的最大容量
