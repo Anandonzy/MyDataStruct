@@ -26,6 +26,7 @@ public class SingleLinkedListDemo {
         singleLinkedList.add(hero3);
 
         //展示链表 √
+        System.out.println("--------------------------原始的链表--------------------------");
         singleLinkedList.list();
 
         //修改 √
@@ -57,8 +58,11 @@ public class SingleLinkedListDemo {
 
         //利用栈的数据结构反转链表
         System.out.println("--------------------------利用栈的数据结构反转链表之后的链表--------------------------");
-
         singleLinkedList.reversePrint(singleLinkedList.getHead());
+
+        //找到导数第n个节点
+        System.out.println("--------------------------倒数第n个节点的信息--------------------------");
+        System.out.println(singleLinkedList.findLastIndexNode(singleLinkedList.head, 1));
 
     }
 }
@@ -252,6 +256,51 @@ class SingleLinkedList {
         while (stack.size() > 0) {
             System.out.println(stack.pop());
         }
+    }
+
+    //查找单链表中第导数n个节点.
+
+    /**
+     * @param head  头结点
+     * @param index 导数第n个
+     * @return 思路:
+     * 1.一个方法接收头结点和index
+     * 2.index表示倒数第n个
+     * 3.先把链表从头到尾遍历,得到链表的总长度,getLength
+     * 4.得到size 之后,我们遍历第(size-index)个,就可以得到.
+     * 5.如果找到了,就返回该节点,如果找不到,则返回null
+     */
+    public static HeroNode findLastIndexNode(HeroNode head, int index) {
+
+        if (head == null || head.next == null) {
+            throw new RuntimeException("链表为空~");
+        }
+        HeroNode temp = head.next;
+        int size = getLength(head);
+        //判断size 的值
+        if (size < 0 || index > size) {
+            return null;
+        }
+        //遍历到size-index 的位置即是我们要找的index的节点.
+        for (int i = 0; i < size - index; i++) {
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+    //得到链表的有效长度,不算头结点.
+    private static int getLength(HeroNode head) {
+        if (head == null) {
+            throw new RuntimeException("链表为空~");
+        }
+        //定义一个辅助结点
+        HeroNode temp = head.next;
+        int size = 0;
+        while (temp != null) {
+            size++;
+            temp = temp.next;
+        }
+        return size;
     }
 
 
